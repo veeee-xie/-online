@@ -300,10 +300,20 @@ code{background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:12px;colo
       <thead><tr><th>区域</th><th>酒店</th><th>入住→退房</th><th>夜</th><th>状态</th></tr></thead>
       <tbody>
         <tr><td>日惹</td><td>The Rich Jogja Hotel</td><td>9/25 → 9/28</td><td>3</td><td><span class="pill ok">已确认</span></td></tr>
-        <tr><td>布罗莫</td><td>Arnez Tropical Cottage (Cemoro Lawang)</td><td>9/28 → 9/30</td><td>2</td><td><span class="pill warn">待确认房间数</span></td></tr>
+        <tr><td>布罗莫</td><td>Arnez Tropical Cottage (Cemoro Lawang)</td><td>9/28 → 9/30</td><td>2</td><td><span class="pill ok">已确认</span></td></tr>
         <tr><td>科莫多</td><td>Inn Room Bajo Hotel (Jl. Soekarno Hatta 86)</td><td>9/30 → 10/3</td><td>3</td><td><span class="pill ok">已确认</span></td></tr>
         <tr><td>巴厘岛·机场</td><td>Grandmas Plus Hotel Airport</td><td>10/3 → 10/4</td><td>1</td><td><span class="pill ok">已确认</span></td></tr>
         <tr><td>巴厘岛·Kuta</td><td>Discovery Kartika Plaza Hotel</td><td>10/4 → 10/6</td><td>2</td><td><span class="pill ok">已确认</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>🚐 包车 / 一日游（已订）</h3>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>日期</th><th>司机 / 团</th><th>路线</th><th>包含</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>9/28 → 9/30</td><td><b>Mocces</b></td><td>SGU 站 → Arnez → Sewu → Bromo → SUB 机场</td><td>3D交通 + 2D接送 + Sewu门票向导 + Bromo门票 + Jeep</td><td><span class="pill ok">已订 · 4,600,000 IDR / 4人</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -343,7 +353,7 @@ code{background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:12px;colo
     <div class="tip"><b>宗教礼仪</b>：进寺庙需穿纱笼（sarong），多数景点门口免费借。生理期女性不可进入主殿（印尼传统规定）。</div>
     <div class="tip"><b>饮水</b>：自来水不可直饮，全程买瓶装水（Aqua 牌最普及）。带保温袋+红霉素软膏（皮肤擦伤用）。</div>
     <div class="tip"><b>充电</b>：印尼插座为欧标两圆孔，部分酒店含 USB 口。带 1 个万能转换头 + 多口充电宝即可。</div>
-    <div class="tip"><b>高风险日</b>：<b style="color:var(--warn)">9/30</b> 布罗莫日出 → 4h 车程 → 15:30 起飞，全程最脆的一天。前一晚把大行李交给司机运走，只带手提包上山。</div>
+    <div class="tip"><b>高风险日</b>：<b style="color:var(--warn)">9/30</b> 布罗莫日出 → 4h 车程 → 15:30 起飞，全程最脆的一天。<b>Mocces 包车全包</b>（含 jeep + 送机场），前一晚把大行李交给司机，只带手提包上山。</div>
   </div>
 </section>
 
@@ -401,27 +411,27 @@ const DAYS = [
       {t:"上午",tz:"+07:00",type:"",title:"睡到自然醒 · 退房",desc:"行李寄存酒店",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel"},
       {t:"13:37",tz:"+07:00",type:"flight",title:"Argo Wilis Panoramic 全景列车",desc:"Executive舱 · 4人 2A/2B/3A/3B · 右座靠山景",lat:-7.7891,lng:110.3622,loc:"日惹Tugu火车站",book:"已出票"},
       {t:"17:25",tz:"+07:00",type:"flight",title:"抵达泗水 SGU 站",desc:"泗水Gubeng站 · 市区",lat:-7.2654,lng:112.7434,loc:"泗水Gubeng火车站"},
-      {t:"17:30",tz:"+07:00",type:"",title:"包车去 Cemoro Lawang",desc:"1.5-2h 山路 · ⚠️17:30后山区叫车难，必提前订",lat:-7.9425,lng:112.9530,loc:"Cemoro Lawang",book:"⚠️需订包车"},
-      {t:"19:30",tz:"+07:00",type:"hotel",title:"入住 Arnez Tropical Cottage",desc:"2晚 · Cemoro Lawang 火山小镇 · 海拔2200m",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage",book:"待确认房间数"},
+      {t:"17:30",tz:"+07:00",type:"",title:"Mocces 接站 → Cemoro Lawang",desc:"SGU 站口接 · 3D包车Day1 · 1.5-2h 山路",lat:-7.9425,lng:112.9530,loc:"Cemoro Lawang",book:"✅Mocces"},
+      {t:"19:30",tz:"+07:00",type:"hotel",title:"入住 Arnez Tropical Cottage",desc:"2晚 · Cemoro Lawang 火山小镇 · 海拔2200m · 4人够住",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
     ]},
-  {n:5,date:"9/29 周二",title:"赛武瀑布 + 蓝棉瀑布 + 晚上Bromo",color:"#06A77D",tz:"WIB +7",
+  {n:5,date:"9/29 周二",title:"赛武瀑布一日游 + 回 Bromo 山脚",color:"#06A77D",tz:"WIB +7",
     items:[
       {t:"06:00",tz:"+07:00",type:"",title:"早餐",desc:"Cemoro Lawang 山区，建议早吃",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
-      {t:"07:00",tz:"+07:00",type:"",title:"出发去 Tumpak Sewu",desc:"1.5-2h 到 Lumajang · 顺路有蓝棉瀑布",lat:-8.2493,lng:113.0910,loc:"Tumpak Sewu 赛武瀑布",book:"⚠️需订包车"},
+      {t:"07:00",tz:"+07:00",type:"",title:"Mocces 带去 Tumpak Sewu",desc:"1.5-2h 到 Lumajang · Sewu 一日游含向导+门票",lat:-8.2493,lng:113.0910,loc:"Tumpak Sewu 赛武瀑布",book:"✅Mocces"},
       {t:"09:00",tz:"+07:00",type:"",title:"游览赛武瀑布",desc:"2-3h · 溯溪鞋+防水袋必备 · 上午人少光好",lat:-8.2493,lng:113.0910,loc:"Tumpak Sewu"},
-      {t:"12:00",tz:"+07:00",type:"",title:"回程顺路蓝棉瀑布 Madakaripura",desc:"30min 偏离主路 · Bromo方向",lat:-7.6933,lng:113.0736,loc:"Madakaripura 蓝棉瀑布"},
+      {t:"14:00",tz:"+07:00",type:"",title:"Mocces 送回 Bromo 山脚",desc:"Sewu 结束直送 Arnez · 不绕蓝棉（节约体力）",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
       {t:"14:00",tz:"+07:00",type:"",title:"游览蓝棉瀑布",desc:"2h · 峡谷溯溪 · 可与赛武二选一减负",lat:-7.6933,lng:113.0736,loc:"Madakaripura"},
       {t:"16:00",tz:"+07:00",type:"",title:"回火山小镇休整",desc:"1h · 晚餐+早睡",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
-      {t:"19:00",tz:"+07:00",type:"",title:"出发去 Bromo 看星空",desc:"可选 · 决定9/30行李方案",lat:-7.9425,lng:112.9530,loc:"Bromo区域",book:"⚠️需订Bromo团"},
+      {t:"20:00",tz:"+07:00",type:"",title:"早睡 · 为 9/30 凌晨保存体力",desc:"Mocces 凌晨 3:30 来接 jeep · 别熬",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
       {t:"过夜",tz:"+07:00",type:"hotel",title:"住 Arnez Tropical Cottage",desc:"2晚最后一晚 · 9/30凌晨3:30 jeep团",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
     ]},
   {n:6,date:"9/30 周三",title:"Bromo日出 + 飞科莫多 ⚠️高风险日",color:"#7209B7",tz:"WIB +7 → WITA +8",
     items:[
-      {t:"03:30",tz:"+07:00",type:"warn",title:"Bromo jeep 日出团集合",desc:"⚠️整段最脆的一天 · 提前订团",lat:-7.9425,lng:112.9530,loc:"Arnez门口",book:"⚠️必订Bromo团"},
+      {t:"03:30",tz:"+07:00",type:"warn",title:"Mocces jeep 集合",desc:"Arnez 门口 · Bromo 日出团 · Mocces 全包",lat:-7.9425,lng:112.9530,loc:"Arnez门口",book:"✅Mocces"},
       {t:"04:30",tz:"+07:00",type:"warn",title:"King Kong Hill 看日出",desc:"云海+太阳 · 5-10°C 带冲锋衣",lat:-7.9425,lng:112.9530,loc:"Bromo日出观景台"},
       {t:"05:30",tz:"+07:00",type:"warn",title:"Bromo 火山口+沙漠",desc:"骑马上火山口 · 沙海徒步",lat:-7.9425,lng:112.9530,loc:"Bromo火山口"},
       {t:"08:00",tz:"+07:00",type:"warn",title:"回酒店退房 · 行李装车",desc:"大行李前一晚交给司机运走，只带手提包上山",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
-      {t:"09:00",tz:"+07:00",type:"warn",title:"发车去 SUB 机场",desc:"4h · 走 Probolinggo 高速直奔机场",lat:-7.9425,lng:112.9530,loc:"Cemoro→SUB包车",book:"⚠️必订4h包车"},
+      {t:"09:00",tz:"+07:00",type:"warn",title:"Mocces 送 SUB 机场",desc:"4h · 走 Probolinggo 高速 · 13:00到机场 · 提前2.5h",lat:-7.9425,lng:112.9530,loc:"Cemoro→SUB",book:"✅Mocces"},
       {t:"13:00",tz:"+07:00",type:"warn",title:"抵达泗水 SUB 机场",desc:"国内出发 · 提前1.5h值机",lat:-7.3798,lng:112.7867,loc:"泗水Juanda机场"},
       {t:"15:30",tz:"+07:00",type:"flight",title:"飞科莫多 IU726",desc:"1h30m · ⚠️仅10KG托运+1件手提 · Super Air Jet",lat:-7.3798,lng:112.7867,loc:"SUB机场",book:"已出票"},
       {t:"18:00",tz:"+08:00",type:"flight",title:"抵达科莫多 LBJ",desc:"⚠️时钟+1h（WIB→WITA）· 落地天没全黑",lat:-8.8983,lng:119.8895,loc:"科莫多LBJ机场"},
@@ -596,18 +606,13 @@ setInterval(tick,1000);
 /* ============ 待办清单 ============ */
 const TODO = [
   {p:"P0",t:"婆罗浮屠 9/26 门票官网预订（限流1200人/天）",d:"borobudurpark.com"},
-  {p:"P0",t:"Bromo 9/30 日出 jeep 团",d:"整段最脆的一天"},
-  {p:"P0",t:"Cemoro Lawang → SUB 机场 4h 包车（9/30）",d:"不能依赖Bromo团承接"},
   {p:"P1",t:"科莫多 10/1 团（确认1D还是2D1N）",d:"决定10/2行程"},
   {p:"P1",t:"佩尼达 10/4 包车+船票",d:"周日爆款，船票会售罄"},
-  {p:"P1",t:"9/28 SGU 火车站 → Cemoro Lawang 包车",d:"17:30后山区叫车极难"},
   {p:"P1",t:"9/26 日惹包车（婆罗浮屠+普兰巴南一日）",d:"整天包车比打车划算"},
   {p:"P2",t:"9/27 默拉皮 jeep 团",d:"当天订也行，提前订锁价"},
-  {p:"P2",t:"9/29 Tumpak Sewu 包车",d:"单程1.5-2h，要找靠谱司机"},
   {p:"P2",t:"10/3 巴厘岛包车（机场→乌布→酒店）",d:"落地当天订也行"},
   {p:"P2",t:"10/5 苍古摩托车租赁",d:"带国际驾照翻译件"},
   {p:"P2",t:"Telkomsel eSIM/电话卡（10天45元10G）",d:"落地即激活"},
-  {p:"P2",t:"确认 Arnez Tropical Cottage 房间数（4人需2间）",d:"只订了1间bungalow"},
   {p:"P2",t:"4人 eVOA 电子签确认（DANWEI已办）",d:"另3人各1份"},
   {p:"P2",t:"换汇 3000 人民币 + 100 美金",d:"国内换好"},
   {p:"P2",t:"印尼盾零钱（小费/打车）",d:"落地机场换少量"},
