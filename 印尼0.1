@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>印尼12天 · 4人旅行手册</title>
+<style>
+/* ============ 主题变量 ============ */
+:root{
+  --bg:#f5f1ea; --bg2:#efe9de; --card:#ffffff; --card2:#fbf7f0;
+  --ink:#1f2937; --ink2:#4b5563; --ink3:#6b7280;
+  --line:#e5dcc9; --accent:#0f766e; --accent2:#c2410c;
+  --warn:#b91c1c; --ok:#15803d; --tag:#fef3c7;
+  --shadow:0 4px 20px rgba(0,0,0,.06);
+  --shadow2:0 2px 8px rgba(0,0,0,.05);
+}
+[data-theme="night"]{
+  --bg:#0b1120; --bg2:#0f172a; --card:#162032; --card2:#1e293b;
+  --ink:#e5e7eb; --ink2:#cbd5e1; --ink3:#94a3b8;
+  --line:#334155; --accent:#2dd4bf; --accent2:#f97316;
+  --warn:#f87171; --ok:#4ade80; --tag:#422006;
+  --shadow:0 4px 20px rgba(0,0,0,.4);
+  --shadow2:0 2px 8px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.6;
+  font-size:15px; -webkit-font-smoothing:antialiased;
+  transition:background .4s,color .4s;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 80px}
+section{margin:0 0 28px}
+h2{font-size:20px;margin:0 0 14px;display:flex;align-items:center;gap:8px;font-weight:700}
+h2 .n{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+h3{font-size:16px;margin:18px 0 8px}
+p{margin:0 0 8px}
+small{color:var(--ink3)}
+a{color:var(--accent);text-decoration:none}
+
+/* ============ 顶部 ============ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(135deg,var(--accent),#0d524d);
+  color:#fff;padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
+  backdrop-filter:saturate(180%);
+}
+[data-theme="night"] .topbar{background:linear-gradient(135deg,#0f766e,#134e4a)}
+.topbar .t{font-size:15px;font-weight:600}
+.topbar .s{font-size:11px;opacity:.8;display:block;margin-top:2px}
+.theme-btn{
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);
+  color:#fff;border-radius:20px;padding:6px 12px;font-size:12px;cursor:pointer;
+}
+
+/* ============ 此刻关注 ============ */
+#now-watch{padding:0 0 8px}
+.nw-card{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border-radius:18px;padding:22px 20px;box-shadow:var(--shadow);
+  border:1px solid var(--line);text-align:center;overflow:hidden;position:relative;
+}
+.nw-card::before{content:"";position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(15,118,110,.08),transparent 70%)}
+.nw-label{font-size:12px;color:var(--ink3);letter-spacing:2px;margin-bottom:8px}
+.nw-event{font-size:18px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.nw-when{font-size:13px;color:var(--ink2);margin-bottom:18px}
+.nw-count{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.nw-unit{background:var(--bg2);border-radius:14px;padding:10px 14px;min-width:64px;border:1px solid var(--line)}
+.nw-num{font-size:30px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.nw-cap{font-size:11px;color:var(--ink3);margin-top:4px}
+.nw-tz{font-size:11px;color:var(--ink3);margin-top:14px}
+
+/* ============ 总览地图 ============ */
+.map-wrap{
+  background:var(--card);border-radius:18px;padding:14px;box-shadow:var(--shadow2);
+  border:1px solid var(--line);overflow:hidden;
+}
+.svg-map{width:100%;height:auto;display:block}
+.map-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:11px;color:var(--ink2)}
+.map-legend span{display:flex;align-items:center;gap:5px}
+.map-legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+
+/* ============ 卡片通用 ============ */
+.card{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow2);border:1px solid var(--line);margin-bottom:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:8px 6px;border-bottom:2px solid var(--line);color:var(--ink2);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.tbl td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;background:var(--tag);color:var(--accent2);font-weight:600}
+.pill.ok{background:#dcfce7;color:var(--ok)}[data-theme="night"] .pill.ok{background:#052e16}
+.pill.warn{background:#fee2e2;color:var(--warn)}[data-theme="night"] .pill.warn{background:#450a0a}
+.pill.todo{background:#e0e7ff;color:#4338ca}[data-theme="night"] .pill.todo{background:#1e1b4b}
+
+/* ============ 逐日行程 ============ */
+.day{margin-bottom:24px}
+.day-head{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
+  background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow2);
+  cursor:pointer;position:relative;
+}
+.day-head::after{content:"▾";margin-left:auto;color:var(--ink3);transition:transform .3s;font-size:14px}
+.day.open .day-head::after{transform:rotate(180deg)}
+.day-dot{width:14px;height:14px;border-radius:50%;flex:none;border:3px solid var(--bg);box-shadow:0 0 0 2px currentColor}
+.day-title{font-weight:700;font-size:15px;flex:none}
+.day-date{font-size:12px;color:var(--ink3);margin-left:auto;margin-right:8px}
+.day-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.day.open .day-body{max-height:9999px}
+.day-inner{padding:10px 4px 4px}
+.day-map{background:var(--card2);border-radius:12px;padding:10px;margin-bottom:12px;border:1px solid var(--line)}
+.day-map-btn{display:block;width:100%;margin-top:8px;padding:8px;border:1px dashed var(--line);border-radius:8px;background:transparent;color:var(--accent);font-size:12px;cursor:pointer}
+
+.tl{position:relative;padding-left:20px;margin:0;list-style:none}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{position:relative;margin-bottom:12px;padding-left:8px}
+.tl li::before{content:"";position:absolute;left:-17px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.flight::before{background:var(--accent2)}
+.tl li.hotel::before{background:#7c3aed}
+.tl li.warn::before{background:var(--warn)}
+.t-time{font-size:12px;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;display:block}
+.t-tz{font-size:10px;color:var(--ink3);margin-left:6px;font-weight:400}
+.t-title{font-size:14px;font-weight:600;margin:1px 0 2px}
+.t-desc{font-size:12px;color:var(--ink2)}
+.t-loc{display:inline-flex;align-items:center;gap:4px;margin-top:5px;font-size:11px;color:var(--accent);background:var(--bg2);padding:3px 8px;border-radius:10px;border:1px solid var(--line);cursor:pointer}
+.t-loc:active{transform:scale(.97)}
+.t-loc::before{content:"📍"}
+.t-book{margin-left:6px}
+
+/* ============ 待办 ============ */
+.todo li{padding:9px 10px;border-bottom:1px solid var(--line);display:flex;gap:9px;align-items:flex-start;font-size:13px;cursor:pointer;user-select:none;transition:.15s}
+.todo li:last-child{border-bottom:none}
+.todo li:hover{background:var(--card2)}
+.todo li.done .todo-txt{text-decoration:line-through;opacity:.4}
+.todo li.done .todo-desc{opacity:.35}
+.todo .cb{flex:none;width:20px;height:20px;border-radius:5px;border:2px solid var(--ink3);margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;transition:.15s;line-height:1}
+.todo li.done .cb{background:var(--accent);border-color:var(--accent);color:#fff}
+.todo .pri{flex:none;width:22px;height:22px;border-radius:6px;background:var(--tag);color:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.todo .pri.p0{background:#fecaca;color:var(--warn)}[data-theme="night"] .todo .pri.p0{background:#7f1d1d;color:#fecaca}
+.todo .pri.p1{background:#fed7aa;color:#c2410c}
+.todo .body{flex:1;min-width:0}
+.todo .body small{opacity:.7}
+
+/* ============ 贴士 ============ */
+.tip{padding:10px 12px;background:var(--card2);border-radius:10px;margin-bottom:8px;border-left:3px solid var(--accent);font-size:13px}
+.tip b{color:var(--accent2)}
+
+/* ============ 部署 ============ */
+.steps{counter-reset:s}
+.steps li{position:relative;padding:10px 10px 10px 42px;margin-bottom:8px;background:var(--card2);border-radius:10px;border:1px solid var(--line);font-size:13px;list-style:none}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:8px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.steps li.must::after{content:"电脑";position:absolute;right:8px;top:8px;background:var(--warn);color:#fff;font-size:10px;padding:1px 6px;border-radius:4px}
+code{background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:12px;color:var(--accent2)}
+
+/* ============ 响应 ============ */
+@media(max-width:480px){
+  .nw-num{font-size:26px;min-width:56px}
+  .nw-unit{padding:8px 10px;min-width:56px}
+  h2{font-size:18px}
+  .tbl{font-size:12px}
+}
+@media(min-width:700px){
+  body{font-size:16px}
+  .day-date{position:absolute;right:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="t">🇮🇩 印尼12天 · 4人旅行手册</div>
+    <div class="s" id="topbar-sub">9/25 广州出发 → 10/6 抵港</div>
+  </div>
+  <button class="theme-btn" id="theme-btn">🌙</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============ 1. 此刻关注 ============ -->
+<section id="now-watch">
+  <h2><span class="n">1</span>此刻关注</h2>
+  <div class="nw-card">
+    <div class="nw-label">下一项行程</div>
+    <div class="nw-event" id="nw-event">加载中…</div>
+    <div class="nw-when" id="nw-when"></div>
+    <div class="nw-count" id="nw-count"></div>
+    <div class="nw-tz" id="nw-tz"></div>
+  </div>
+</section>
+
+<!-- ============ 2. 行程总览地图 ============ -->
+<section>
+  <h2><span class="n">2</span>行程总览地图</h2>
+  <div class="map-wrap">
+    <svg class="svg-map" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+        </filter>
+        <pattern id="sea" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="10" r="0.8" fill="currentColor" opacity=".15"/>
+        </pattern>
+      </defs>
+
+      <!-- 海洋背景 -->
+      <rect width="800" height="460" fill="currentColor" opacity="0"/>
+      <rect width="800" height="460" fill="url(#sea)" style="color:#7dd3fc" opacity=".4"/>
+
+      <!-- 爪哇岛 (手绘感) -->
+      <path d="M120,210 C160,180 200,175 240,185 C280,195 320,180 360,190 C400,200 440,195 480,205 C520,215 540,230 520,245 C500,260 460,255 420,250 C380,245 340,255 300,250 C260,245 220,255 180,245 C150,238 130,225 120,210 Z"
+            fill="#fde68a" stroke="#a16207" stroke-width="1.5" filter="url(#rough)" opacity=".85"/>
+      <!-- 巴厘岛 -->
+      <path d="M560,255 C580,245 610,245 630,255 C645,263 645,278 625,285 C605,290 580,288 565,278 C555,270 555,262 560,255 Z"
+            fill="#fbcfe8" stroke="#be185d" stroke-width="1.5" filter="url(#rough)" opacity=".85"/>
+      <!-- 弗洛雷斯/科莫多 -->
+      <path d="M680,270 C710,258 750,260 770,272 C780,280 770,295 750,300 C720,308 690,302 678,290 C672,283 675,275 680,270 Z"
+            fill="#bbf7d0" stroke="#15803d" stroke-width="1.5" filter="url(#rough)" opacity=".85"/>
+      <!-- 香港/广州小标 -->
+      <circle cx="90" cy="110" r="6" fill="#64748b" filter="url(#rough)"/>
+
+      <!-- 城市标记 -->
+      <g font-family="system-ui" font-size="11" fill="#1f2937">
+        <circle cx="160" cy="215" r="3.5" fill="#0f766e"/><text x="167" y="219">雅加达</text>
+        <circle cx="300" cy="218" r="3.5" fill="#0f766e"/><text x="307" y="222">日惹</text>
+        <circle cx="440" cy="222" r="3.5" fill="#0f766e"/><text x="447" y="226">泗水</text>
+        <circle cx="485" cy="228" r="3.5" fill="#c2410c"/><text x="492" y="232">布罗莫</text>
+        <circle cx="600" cy="270" r="3.5" fill="#0f766e"/><text x="607" y="274">巴厘岛</text>
+        <circle cx="725" cy="282" r="3.5" fill="#0f766e"/><text x="732" y="286">科莫多</text>
+        <circle cx="90" cy="110" r="3.5" fill="#475569"/><text x="100" y="114">广州/香港</text>
+      </g>
+
+      <!-- 航线 (虚线) -->
+      <g fill="none" stroke-dasharray="4,4" stroke-width="1.8" opacity=".75">
+        <path d="M93,113 C120,160 140,200 160,212" stroke="#E63946"/>
+        <path d="M165,215 C200,200 250,200 298,217" stroke="#E63946"/>
+        <path d="M445,222 C480,240 520,260 597,268" stroke="#7209B7"/>
+        <path d="M600,270 C640,275 680,280 722,282" stroke="#023E8A"/>
+        <path d="M598,268 C400,200 200,130 93,112" stroke="#6C757D" stroke-dasharray="3,5"/>
+      </g>
+
+      <!-- 住宿标记 (月亮) -->
+      <g font-size="13">
+        <text x="295" y="240" fill="#7c3aed">🌙</text>
+        <text x="478" y="245" fill="#7c3aed">🌙</text>
+        <text x="720" y="300" fill="#7c3aed">🌙</text>
+        <text x="595" y="288" fill="#7c3aed">🌙🌙</text>
+      </g>
+    </svg>
+    <div class="map-legend">
+      <span><i style="background:#E63946"></i>9/25 出发航线</span>
+      <span><i style="background:#F77F00"></i>9/26 寺庙日</span>
+      <span><i style="background:#C1421F"></i>9/27 火山</span>
+      <span><i style="background:#4361EE"></i>9/28 火车东进</span>
+      <span><i style="background:#06A77D"></i>9/29 瀑布</span>
+      <span><i style="background:#7209B7"></i>9/30 布罗莫→科莫多</span>
+      <span><i style="background:#023E8A"></i>10/1-2 科莫多船游</span>
+      <span><i style="background:#E76F51"></i>10/3-5 巴厘岛</span>
+      <span><i style="background:#6C757D"></i>10/6 回程</span>
+      <span>🌙 当晚住宿</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 已确认预订 ============ -->
+<section>
+  <h2><span class="n">3</span>已确认预订</h2>
+  <p style="font-size:12px;color:var(--ink3);margin-bottom:12px">仅显示公开信息（时间、地点、航司），确认号/证件号不写进页面</p>
+
+  <h3>✈️ 机票（5段）</h3>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>日期</th><th>航班</th><th>出发→到达</th><th>时长</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>9/25</td><td>8B861 狮航</td><td>02:30 广州CAN·T2 → 06:40 雅加达CGK·T3</td><td>5h10m</td><td><span class="pill ok">已出票</span></td></tr>
+        <tr><td>9/25</td><td>8B5530 狮航</td><td>10:40 雅加达CGK·T3 → 11:50 日惹YIA</td><td>1h10m</td><td><span class="pill ok">已出票</span></td></tr>
+        <tr><td>9/30</td><td>IU726 Super Air Jet</td><td>15:30 泗水SUB → 18:00 科莫多LBJ</td><td>1h30m</td><td><span class="pill ok">已出票</span></td></tr>
+        <tr><td>10/3</td><td>QZ643 亚航</td><td>10:35 科莫多LBJ → 11:45 巴厘岛DPS</td><td>1h10m</td><td><span class="pill ok">已出票</span></td></tr>
+        <tr><td>10/6</td><td>SQ949+SQ894 新航</td><td>07:15 巴厘岛DPS → 10:00 新加坡SIN → 17:05 香港HKG</td><td>共9h50m</td><td><span class="pill ok">已出票</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>🚄 火车</h3>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>日期</th><th>车次</th><th>出发→到达</th><th>舱位</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>9/28</td><td>Argo Wilis Panoramic</td><td>13:37 日惹YK → 17:25 泗水SGU</td><td>Executive</td><td><span class="pill ok">已出票</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>🏨 酒店（5家·共11晚）</h3>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>区域</th><th>酒店</th><th>入住→退房</th><th>夜</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>日惹</td><td>The Rich Jogja Hotel</td><td>9/25 → 9/28</td><td>3</td><td><span class="pill ok">已确认</span></td></tr>
+        <tr><td>布罗莫</td><td>Arnez Tropical Cottage (Cemoro Lawang)</td><td>9/28 → 9/30</td><td>2</td><td><span class="pill warn">待确认房间数</span></td></tr>
+        <tr><td>科莫多</td><td>Inn Room Bajo Hotel (Jl. Soekarno Hatta 86)</td><td>9/30 → 10/3</td><td>3</td><td><span class="pill ok">已确认</span></td></tr>
+        <tr><td>巴厘岛·机场</td><td>Grandmas Plus Hotel Airport</td><td>10/3 → 10/4</td><td>1</td><td><span class="pill ok">已确认</span></td></tr>
+        <tr><td>巴厘岛·Kuta</td><td>Discovery Kartika Plaza Hotel</td><td>10/4 → 10/6</td><td>2</td><td><span class="pill ok">已确认</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 4. 逐日行程 ============ -->
+<section>
+  <h2><span class="n">4</span>逐日行程</h2>
+  <p style="font-size:12px;color:var(--ink3);margin-bottom:12px">点击每日标题展开当日路线地图；每个 📍 地点可点击唤起 Google 地图导航</p>
+  <div id="days"></div>
+</section>
+
+<!-- ============ 5. 待办清单 ============ -->
+<section>
+  <h2><span class="n">5</span>待办清单</h2>
+  <p style="font-size:12px;color:var(--ink3);margin-bottom:12px">点一下勾选已办完的项（勾选只存在本机浏览器，4人各自进度不同步）。有要改的地方仍告诉我，我改页面</p>
+  <div class="card">
+    <ul class="todo" id="todo" style="list-style:none;padding:0;margin:0"></ul>
+  </div>
+</section>
+
+<!-- ============ 6. 实用贴士 ============ -->
+<section>
+  <h2><span class="n">6</span>实用贴士</h2>
+  <div class="card">
+    <div class="tip"><b>时区</b>：日惹/泗水/雅加达为 WIB（UTC+7），科莫多/巴厘岛为 WITA（UTC+8）。9/30 飞科莫多时钟会"凭空多1小时"——别误以为算错。</div>
+    <div class="tip"><b>签证</b>：eVOA 电子落地签 30 天，4人各1份，须在 12/11/2026 前使用。落地雅加达走 Autogate 自助通关，省 30-60min。需出示回程机票（10/6 DPS→HKG）+ 护照（剩余有效期 &gt; 6 个月）。</div>
+    <div class="tip"><b>通讯</b>：Telkomsel 10天 45元 10G，落地雅加达 CGK 机场或日惹市区便利店激活。</div>
+    <div class="tip"><b>换汇</b>：国内换 3000 人民币 + 100 美金。雅加达/日惹市区换汇点比机场汇率好，1 元 ≈ 2,150 印尼盾（参考）。</div>
+    <div class="tip"><b>打车</b>：Grab / Gojek 是日惹、泗水、巴厘岛的主力，比出租便宜且明码标价。Bromo 山区要提前订包车，现场叫不到。</div>
+    <div class="tip"><b>婆罗浮屠限流</b>：每日登顶限 1,200 人，必须官网 borobudurpark.com 提前订，当天买大概率买不到。</div>
+    <div class="tip"><b>布罗莫日出</b>：9月底日出约 05:20，气温 5-10°C，带三合一冲锋衣或厚外套。jeep 团 03:30 集合。</div>
+    <div class="tip"><b>赛武瀑布</b>：溯溪鞋 + 手机防水袋必备，下山路滑湿滑，上午 7-10 点人少光好。</div>
+    <div class="tip"><b>科莫多船游</b>：晕船药提前 30min 吃。科莫多巨蜥保持 3m 距离，不可触摸。10 月日落约 18:00。</div>
+    <div class="tip"><b>巴厘岛摩托</b>：建议带国际驾照翻译件（IDP），当地警察有时查。头盔必戴。10/3-10/5 租车约 70-100K IDR/天。</div>
+    <div class="tip"><b>佩尼达船票</b>：10/4 周日是爆款，建议提前 1-2 天在 Klook 或码头官网订，17:00 末班船务必留足 buffer。</div>
+    <div class="tip"><b>宗教礼仪</b>：进寺庙需穿纱笼（sarong），多数景点门口免费借。生理期女性不可进入主殿（印尼传统规定）。</div>
+    <div class="tip"><b>饮水</b>：自来水不可直饮，全程买瓶装水（Aqua 牌最普及）。带保温袋+红霉素软膏（皮肤擦伤用）。</div>
+    <div class="tip"><b>充电</b>：印尼插座为欧标两圆孔，部分酒店含 USB 口。带 1 个万能转换头 + 多口充电宝即可。</div>
+    <div class="tip"><b>高风险日</b>：<b style="color:var(--warn)">9/30</b> 布罗莫日出 → 4h 车程 → 15:30 起飞，全程最脆的一天。前一晚把大行李交给司机运走，只带手提包上山。</div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ============ 主题切换 ============ */
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+function applyTheme(force){
+  const hour = new Date().getHours();
+  let dark = force !== undefined ? force : (hour < 6 || hour >= 18);
+  html.setAttribute('data-theme', dark ? 'night' : 'day');
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+}
+applyTheme();
+themeBtn.onclick = ()=>{
+  const cur = html.getAttribute('data-theme')==='night';
+  applyTheme(!cur);
+};
+// 每分钟检查一次（不强制覆盖手动，仅自动时段切换）
+setInterval(()=>{ if(!themeBtn.dataset.manual) applyTheme(); }, 60000);
+
+/* ============ 行程数据 ============ */
+const DAYS = [
+  {n:1,date:"9/25 周五",title:"出发 · 广州→日惹",color:"#E63946",tz:"国内+8 → WIB+7",
+    items:[
+      {t:"02:30",tz:"+08:00",type:"flight",title:"广州飞雅加达 8B861 狮航",desc:"5h10m · 国际值机提前3h · 广州白云T2",lat:23.3972,lng:113.3129,loc:"广州白云机场T2"},
+      {t:"06:40",tz:"+07:00",type:"flight",title:"抵达雅加达 CGK T3",desc:"中转 · 时钟从+8跳到+7（多1小时）",lat:-6.1256,lng:106.6559,loc:"雅加达苏加诺-哈达机场T3"},
+      {t:"10:40",tz:"+07:00",type:"flight",title:"雅加达飞日惹 8B5530 狮航",desc:"1h10m · CGK T3 → YIA",lat:-6.1256,lng:106.6559,loc:"雅加达CGK"},
+      {t:"11:50",tz:"+07:00",type:"flight",title:"抵达日惹 YIA",desc:"机场快线到Tugu站约40min，或Grab打车1h",lat:-7.7961,lng:110.0563,loc:"日惹YIA机场"},
+      {t:"13:00",tz:"+07:00",type:"hotel",title:"入住 The Rich Jogja Hotel",desc:"3晚 · 原地休整，适应时差",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel",book:"已确认"},
+    ]},
+  {n:2,date:"9/26 周六",title:"婆罗浮屠 + 普兰巴南",color:"#F77F00",tz:"WIB +7",
+    items:[
+      {t:"06:00",tz:"+07:00",type:"",title:"出发包车去婆罗浮屠",desc:"1.5h 车程 · 建议5:30出门赶开门",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel",book:"⚠️需订包车"},
+      {t:"07:30",tz:"+07:00",type:"",title:"游览婆罗浮屠",desc:"2h · 世界最大佛教遗址 · 日出最佳",lat:-7.6079,lng:110.2038,loc:"婆罗浮屠 Borobudur",book:"⚠️官网限流1200人/天"},
+      {t:"09:30",tz:"+07:00",type:"",title:"附近午餐",desc:"婆罗浮屠周边餐厅",lat:-7.6079,lng:110.2038},
+      {t:"10:30",tz:"+07:00",type:"",title:"转移普兰巴南",desc:"1.5h 车程 · 两寺庙方向相反",lat:-7.7520,lng:110.4895,loc:"普兰巴南 Prambanan"},
+      {t:"12:00",tz:"+07:00",type:"",title:"游览普兰巴南",desc:"2h+ · 印度教寺庙群 · 可买婆罗浮屠+普兰巴南联票省钱",lat:-7.7520,lng:110.4895,loc:"普兰巴南"},
+      {t:"15:00",tz:"+07:00",type:"",title:"等日落",desc:"10月日落约17:45 · 落日位在Candi Sewu西北侧",lat:-7.7520,lng:110.4895},
+      {t:"18:00",tz:"+07:00",type:"hotel",title:"回市区酒店",desc:"40min · 住The Rich Jogja",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel"},
+    ]},
+  {n:3,date:"9/27 周日",title:"默拉皮火山 + 水宫 + 马里奥波罗",color:"#C1421F",tz:"WIB +7",
+    items:[
+      {t:"09:00",tz:"+07:00",type:"",title:"出发去默拉皮火山",desc:"1-1.5h 车程到 jeep 起点",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel",book:"⚠️需订jeep团+包车"},
+      {t:"10:00",tz:"+07:00",type:"",title:"默拉皮 jeep tour",desc:"2.5-3h · lava trail + bunker + mini museum",lat:-7.5407,lng:110.4457,loc:"默拉皮火山 Merapi"},
+      {t:"13:00",tz:"+07:00",type:"",title:"回市区午餐",desc:"1h 回程",lat:-7.7835,lng:110.3556},
+      {t:"15:00",tz:"+07:00",type:"",title:"水宫 Taman Sari",desc:"⚠️闭馆早：周五只到13:00，平时15:00 · 周日开放",lat:-7.8097,lng:110.3588,loc:"水宫 Taman Sari"},
+      {t:"17:00",tz:"+07:00",type:"",title:"马里奥波罗大街",desc:"逛街+晚餐 · 日惹最热闹的步行街",lat:-7.7923,lng:110.3670,loc:"马里奥波罗大街 Malioboro"},
+      {t:"20:00",tz:"+07:00",type:"hotel",title:"回酒店",desc:"住The Rich Jogja",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel"},
+    ]},
+  {n:4,date:"9/28 周一",title:"火车东进 · 入住火山小镇",color:"#4361EE",tz:"WIB +7",
+    items:[
+      {t:"上午",tz:"+07:00",type:"",title:"睡到自然醒 · 退房",desc:"行李寄存酒店",lat:-7.7835,lng:110.3556,loc:"The Rich Jogja Hotel"},
+      {t:"13:37",tz:"+07:00",type:"flight",title:"Argo Wilis Panoramic 全景列车",desc:"Executive舱 · 4人 2A/2B/3A/3B · 右座靠山景",lat:-7.7891,lng:110.3622,loc:"日惹Tugu火车站",book:"已出票"},
+      {t:"17:25",tz:"+07:00",type:"flight",title:"抵达泗水 SGU 站",desc:"泗水Gubeng站 · 市区",lat:-7.2654,lng:112.7434,loc:"泗水Gubeng火车站"},
+      {t:"17:30",tz:"+07:00",type:"",title:"包车去 Cemoro Lawang",desc:"1.5-2h 山路 · ⚠️17:30后山区叫车难，必提前订",lat:-7.9425,lng:112.9530,loc:"Cemoro Lawang",book:"⚠️需订包车"},
+      {t:"19:30",tz:"+07:00",type:"hotel",title:"入住 Arnez Tropical Cottage",desc:"2晚 · Cemoro Lawang 火山小镇 · 海拔2200m",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage",book:"待确认房间数"},
+    ]},
+  {n:5,date:"9/29 周二",title:"赛武瀑布 + 蓝棉瀑布 + 晚上Bromo",color:"#06A77D",tz:"WIB +7",
+    items:[
+      {t:"06:00",tz:"+07:00",type:"",title:"早餐",desc:"Cemoro Lawang 山区，建议早吃",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
+      {t:"07:00",tz:"+07:00",type:"",title:"出发去 Tumpak Sewu",desc:"1.5-2h 到 Lumajang · 顺路有蓝棉瀑布",lat:-8.2493,lng:113.0910,loc:"Tumpak Sewu 赛武瀑布",book:"⚠️需订包车"},
+      {t:"09:00",tz:"+07:00",type:"",title:"游览赛武瀑布",desc:"2-3h · 溯溪鞋+防水袋必备 · 上午人少光好",lat:-8.2493,lng:113.0910,loc:"Tumpak Sewu"},
+      {t:"12:00",tz:"+07:00",type:"",title:"回程顺路蓝棉瀑布 Madakaripura",desc:"30min 偏离主路 · Bromo方向",lat:-7.6933,lng:113.0736,loc:"Madakaripura 蓝棉瀑布"},
+      {t:"14:00",tz:"+07:00",type:"",title:"游览蓝棉瀑布",desc:"2h · 峡谷溯溪 · 可与赛武二选一减负",lat:-7.6933,lng:113.0736,loc:"Madakaripura"},
+      {t:"16:00",tz:"+07:00",type:"",title:"回火山小镇休整",desc:"1h · 晚餐+早睡",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
+      {t:"19:00",tz:"+07:00",type:"",title:"出发去 Bromo 看星空",desc:"可选 · 决定9/30行李方案",lat:-7.9425,lng:112.9530,loc:"Bromo区域",book:"⚠️需订Bromo团"},
+      {t:"过夜",tz:"+07:00",type:"hotel",title:"住 Arnez Tropical Cottage",desc:"2晚最后一晚 · 9/30凌晨3:30 jeep团",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
+    ]},
+  {n:6,date:"9/30 周三",title:"Bromo日出 + 飞科莫多 ⚠️高风险日",color:"#7209B7",tz:"WIB +7 → WITA +8",
+    items:[
+      {t:"03:30",tz:"+07:00",type:"warn",title:"Bromo jeep 日出团集合",desc:"⚠️整段最脆的一天 · 提前订团",lat:-7.9425,lng:112.9530,loc:"Arnez门口",book:"⚠️必订Bromo团"},
+      {t:"04:30",tz:"+07:00",type:"warn",title:"King Kong Hill 看日出",desc:"云海+太阳 · 5-10°C 带冲锋衣",lat:-7.9425,lng:112.9530,loc:"Bromo日出观景台"},
+      {t:"05:30",tz:"+07:00",type:"warn",title:"Bromo 火山口+沙漠",desc:"骑马上火山口 · 沙海徒步",lat:-7.9425,lng:112.9530,loc:"Bromo火山口"},
+      {t:"08:00",tz:"+07:00",type:"warn",title:"回酒店退房 · 行李装车",desc:"大行李前一晚交给司机运走，只带手提包上山",lat:-7.9425,lng:112.9530,loc:"Arnez Tropical Cottage"},
+      {t:"09:00",tz:"+07:00",type:"warn",title:"发车去 SUB 机场",desc:"4h · 走 Probolinggo 高速直奔机场",lat:-7.9425,lng:112.9530,loc:"Cemoro→SUB包车",book:"⚠️必订4h包车"},
+      {t:"13:00",tz:"+07:00",type:"warn",title:"抵达泗水 SUB 机场",desc:"国内出发 · 提前1.5h值机",lat:-7.3798,lng:112.7867,loc:"泗水Juanda机场"},
+      {t:"15:30",tz:"+07:00",type:"flight",title:"飞科莫多 IU726",desc:"1h30m · ⚠️仅10KG托运+1件手提 · Super Air Jet",lat:-7.3798,lng:112.7867,loc:"SUB机场",book:"已出票"},
+      {t:"18:00",tz:"+08:00",type:"flight",title:"抵达科莫多 LBJ",desc:"⚠️时钟+1h（WIB→WITA）· 落地天没全黑",lat:-8.8983,lng:119.8895,loc:"科莫多LBJ机场"},
+      {t:"18:30",tz:"+08:00",type:"",title:"打车去码头酒店",desc:"5-10min",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+      {t:"19:00",tz:"+08:00",type:"hotel",title:"入住 Inn Room Bajo Hotel",desc:"3晚 · 码头步行5-10min · 提前订隔天一日团",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel",book:"已确认"},
+    ]},
+  {n:7,date:"10/1 周四",title:"科莫多一日团（8景点）",color:"#023E8A",tz:"WITA +8",
+    items:[
+      {t:"07:00",tz:"+08:00",type:"",title:"酒店早餐",desc:"码头步行到船坞",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+      {t:"07:30",tz:"+08:00",type:"",title:"码头集合 · 一日团",desc:"⚠️待确认是1D还是2D1N船宿 · 8景点需确认",lat:-8.5293,lng:119.8794,loc:"Labuan Bajo码头",book:"⚠️需订团"},
+      {t:"全天",tz:"+08:00",type:"",title:"船游科莫多国家公园",desc:"Padar岛·Komodo岛·Rinca·粉沙滩·Manta Point·Taka Makassar·Kelor",lat:-8.5500,lng:119.4833,loc:"科莫多国家公园"},
+      {t:"17:00",tz:"+08:00",type:"hotel",title:"回码头",desc:"住Inn Room Bajo",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+    ]},
+  {n:8,date:"10/2 周五",title:"蝙蝠日落半日团",color:"#F4A261",tz:"WITA +8",
+    items:[
+      {t:"上午",tz:"+08:00",type:"",title:"睡到自然醒",desc:"科莫多小镇逛逛",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+      {t:"14:00",tz:"+08:00",type:"",title:"出发半日团",desc:"船游看果蝠飞出",lat:-8.5293,lng:119.8794,loc:"Labuan Bajo码头",book:"⚠️需订半日团"},
+      {t:"16:00",tz:"+08:00",type:"",title:"船游至蝙蝠岛",desc:"10月日落约18:00 · 果蝠群飞出",lat:-8.5833,lng:119.5500,loc:"蝙蝠岛 Kalong Island"},
+      {t:"18:00",tz:"+08:00",type:"",title:"看果蝠日落",desc:"数千只果蝠飞向陆地觅食 · 季节性",lat:-8.5833,lng:119.5500,loc:"蝙蝠岛"},
+      {t:"19:00",tz:"+08:00",type:"hotel",title:"回码头",desc:"住Inn Room Bajo · 最后一晚",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+    ]},
+  {n:9,date:"10/3 周六",title:"飞巴厘岛 + 乌布",color:"#E76F51",tz:"WITA +8",
+    items:[
+      {t:"08:00",tz:"+08:00",type:"",title:"酒店退房",desc:"⚠️提前退房，标准12:00退房≠10:35航班",lat:-8.5293,lng:119.8794,loc:"Inn Room Bajo Hotel"},
+      {t:"08:30",tz:"+08:00",type:"",title:"打车去 LBJ 机场",desc:"5-10min",lat:-8.8983,lng:119.8895,loc:"科莫多LBJ机场"},
+      {t:"10:35",tz:"+08:00",type:"flight",title:"飞巴厘岛 QZ643 亚航",desc:"1h10m · WITA→WITA 时钟不变",lat:-8.8983,lng:119.8895,loc:"LBJ机场",book:"已出票"},
+      {t:"11:45",tz:"+08:00",type:"flight",title:"抵达巴厘岛 DPS",desc:"出关+取行李+打车约45min",lat:-8.7483,lng:115.1672,loc:"巴厘岛登巴萨机场"},
+      {t:"13:00",tz:"+08:00",type:"hotel",title:"入住 Grandmas Plus Hotel Airport",desc:"1晚 · 机场附近 · 落地先休息",lat:-8.7430,lng:115.1700,loc:"Grandmas Plus Hotel Airport",book:"已确认"},
+      {t:"14:00",tz:"+08:00",type:"",title:"包车去乌布",desc:"1.5h 车程",lat:-8.4333,lng:115.2794,loc:"Alas Harum Bali",book:"⚠️需订包车"},
+      {t:"15:30",tz:"+08:00",type:"",title:"Alas Harum Bali 梯田",desc:"秋千+鸟巢+德格拉郎梯田 · 现场买票",lat:-8.4333,lng:115.2794,loc:"Alas Harum Bali"},
+      {t:"17:00",tz:"+08:00",type:"",title:"乌布皇宫/市场",desc:"皇宫17-18点闭馆 · 改看夜市（18点开始）",lat:-8.5068,lng:115.2628,loc:"乌布皇宫 Ubud Palace"},
+      {t:"19:30",tz:"+08:00",type:"hotel",title:"回机场附近酒店",desc:"1.5h · 10月日落18:15",lat:-8.7430,lng:115.1700,loc:"Grandmas Plus Hotel Airport"},
+    ]},
+  {n:10,date:"10/4 周日",title:"佩尼达岛一日游",color:"#03045E",tz:"WITA +8",
+    items:[
+      {t:"08:00",tz:"+08:00",type:"",title:"退房 → 转移到 Discovery Kartika",desc:"Kuta · 半小时",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika Plaza Hotel",book:"已确认"},
+      {t:"08:30",tz:"+08:00",type:"",title:"打车去 Sanur 码头",desc:"30-40min · ⚠️周日船票紧张提前订",lat:-8.6669,lng:115.2642,loc:"Sanur码头",book:"⚠️提前订船票"},
+      {t:"09:30",tz:"+08:00",type:"",title:"乘船到佩尼达岛",desc:"30min 航程 · 17:00末班船回",lat:-8.7333,lng:115.4667,loc:"佩尼达岛 Nusa Penida"},
+      {t:"10:00",tz:"+08:00",type:"",title:"上岛包车游",desc:"精灵坠崖·破碎海滩·钻石沙滩·树屋",lat:-8.7556,lng:115.4750,loc:"精灵坠崖 Kelingking",book:"⚠️需订岛上车"},
+      {t:"16:30",tz:"+08:00",type:"",title:"回码头",desc:"留足 buffer",lat:-8.7333,lng:115.4667,loc:"佩尼达码头"},
+      {t:"17:00",tz:"+08:00",type:"",title:"末班船回 Sanur",desc:"⚠️错过末班要在岛上过夜",lat:-8.6669,lng:115.2642,loc:"Sanur码头"},
+      {t:"18:00",tz:"+08:00",type:"hotel",title:"回 Discovery Kartika",desc:"30-40min · 2晚",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika Plaza Hotel"},
+    ]},
+  {n:11,date:"10/5 周一",title:"苍古/水明漾摩托车一日游",color:"#80B918",tz:"WITA +8",
+    items:[
+      {t:"上午",tz:"+08:00",type:"",title:"睡到自然醒",desc:"Kuta 早餐",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika Plaza Hotel"},
+      {t:"10:00",tz:"+08:00",type:"",title:"租摩托车",desc:"建议带国际驾照翻译件 · 70-100K IDR/天",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika附近租车",book:"⚠️需租车"},
+      {t:"11:00",tz:"+08:00",type:"",title:"骑行苍古",desc:"咖啡馆+海滩俱乐部 · 老陈家网红店",lat:-8.6476,lng:115.1385,loc:"苍古 Canggu"},
+      {t:"14:00",tz:"+08:00",type:"",title:"骑行水明漾",desc:"Potato Head · La Favela · 收藏店铺路线",lat:-8.6700,lng:115.1700,loc:"水明漾 Seminyak"},
+      {t:"17:00",tz:"+08:00",type:"hotel",title:"回酒店",desc:"骑行回Kuta · 30min",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika Plaza Hotel"},
+    ]},
+  {n:12,date:"10/6 周二",title:"飞香港 · 回程",color:"#6C757D",tz:"WITA +8 → +8",
+    items:[
+      {t:"05:00",tz:"+08:00",type:"flight",title:"酒店退房",desc:"⚠️凌晨航班 · Kuta 离机场5-10min",lat:-8.7225,lng:115.1711,loc:"Discovery Kartika Plaza Hotel"},
+      {t:"05:15",tz:"+08:00",type:"flight",title:"打车去 DPS 机场",desc:"5-10min",lat:-8.7483,lng:115.1672,loc:"巴厘岛DPS机场"},
+      {t:"07:15",tz:"+08:00",type:"flight",title:"飞新加坡 SQ949 新航",desc:"2h45m · DPS → SIN T3 · 行李直达香港",lat:-8.7483,lng:115.1672,loc:"DPS机场",book:"已出票"},
+      {t:"10:00",tz:"+08:00",type:"flight",title:"抵达新加坡樟宜 T3",desc:"中转3h5m · 无需过境签",lat:1.3592,lng:103.9894,loc:"新加坡樟宜机场T3"},
+      {t:"13:05",tz:"+08:00",type:"flight",title:"飞香港 SQ894 新航",desc:"4h · 空客350",lat:1.3592,lng:103.9894,loc:"SIN T3",book:"已出票"},
+      {t:"17:05",tz:"+08:00",type:"flight",title:"抵达香港 HKG T1",desc:"🎉 旅途结束",lat:22.3080,lng:113.9185,loc:"香港国际机场T1"},
+    ]},
+];
+
+/* ============ 渲染逐日行程 ============ */
+const daysEl = document.getElementById('days');
+DAYS.forEach((d,i)=>{
+  const el = document.createElement('div');
+  el.className='day'; if(i===0) el.classList.add('open');
+  el.innerHTML = `
+    <div class="day-head" onclick="this.parentNode.classList.toggle('open')">
+      <span class="day-dot" style="color:${d.color};background:${d.color}"></span>
+      <span class="day-title">Day ${d.n} · ${d.title}</span>
+      <span class="day-date">${d.date} · ${d.tz}</span>
+    </div>
+    <div class="day-body"><div class="day-inner">
+      <div class="day-map">
+        <svg viewBox="0 0 800 120" style="width:100%;height:auto">
+          <line x1="20" y1="60" x2="780" y2="60" stroke="${d.color}" stroke-width="3" stroke-dasharray="8,6" opacity=".6"/>
+          ${d.items.map((it,idx)=>{const x=20+idx*(760/(d.items.length-1||1));const mk=it.type==='flight'?'✈️':it.type==='hotel'?'🌙':it.type==='warn'?'⚠️':'●';return `<g><circle cx="${x}" cy="60" r="8" fill="${d.color}" opacity=".9"/><text x="${x}" y="40" text-anchor="middle" font-size="14">${mk}</text><text x="${x}" y="80" text-anchor="middle" font-size="9" fill="#6b7280">${it.t||''}</text></g>`}).join('')}
+        </svg>
+        <button class="day-map-btn" data-day="${i}">🗺️ 一键打开当日多点导航（Google Maps）</button>
+      </div>
+      <ul class="tl">
+        ${d.items.map(it=>{
+          const cls = it.type==='flight'?'flight':it.type==='hotel'?'hotel':it.type==='warn'?'warn':'';
+          const locBtn = (it.lat&&it.loc) ? `<span class="t-loc" data-lat="${it.lat}" data-lng="${it.lng}" data-name="${it.loc}">${it.loc}</span>` : '';
+          const book = it.book ? `<span class="pill ${it.book.includes('已')?'ok':'warn'} t-book">${it.book}</span>` : '';
+          return `<li class="${cls}">
+            <span class="t-time">${it.t}<span class="t-tz">${it.tz}</span></span>
+            <div class="t-title">${it.title}</div>
+            <div class="t-desc">${it.desc||''}</div>
+            ${locBtn}${book}
+          </li>`;
+        }).join('')}
+      </ul>
+    </div></div>
+  `;
+  daysEl.appendChild(el);
+});
+
+/* ============ 地点点击 → Google Maps 导航 ============ */
+document.addEventListener('click',e=>{
+  const loc = e.target.closest('.t-loc');
+  if(loc){
+    const lat=loc.dataset.lat, lng=loc.dataset.lng, name=encodeURIComponent(loc.dataset.name);
+    const url=`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&destination_place_id=&travelmode=driving&entry=tt`;
+    window.open(url,'_blank');
+    return;
+  }
+  const btn = e.target.closest('.day-map-btn');
+  if(btn){
+    const d = DAYS[btn.dataset.day];
+    const pts = d.items.filter(it=>it.lat).map(it=>`${it.lat},${it.lng}`);
+    if(pts.length<2){ window.open(`https://www.google.com/maps/search/?api=1&query=${pts[0]}`,'_blank'); return; }
+    const origin=pts[0], dest=pts[pts.length-1], wp=pts.slice(1,-1).join('|');
+    const url=`https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}&waypoints=${encodeURIComponent(wp)}&travelmode=driving`;
+    window.open(url,'_blank');
+  }
+});
+
+/* ============ 倒计时 ============ */
+const EVENTS = [
+  {iso:"2026-09-25T02:30:00+08:00",title:"广州飞雅加达 8B861",where:"广州白云机场T2",tz:"+08:00 国内"},
+  {iso:"2026-09-25T10:40:00+07:00",title:"雅加达飞日惹 8B5530",where:"CGK T3",tz:"+07:00 WIB"},
+  {iso:"2026-09-26T06:00:00+07:00",title:"出发包车去婆罗浮屠",where:"The Rich Jogja Hotel",tz:"+07:00"},
+  {iso:"2026-09-27T09:00:00+07:00",title:"出发去默拉皮火山",where:"The Rich Jogja",tz:"+07:00"},
+  {iso:"2026-09-28T13:37:00+07:00",title:"火车 Argo Wilis 去泗水",where:"日惹Tugu站",tz:"+07:00"},
+  {iso:"2026-09-29T07:00:00+07:00",title:"出发去赛武瀑布",where:"Arnez Tropical Cottage",tz:"+07:00"},
+  {iso:"2026-09-30T03:30:00+07:00",title:"Bromo 日出 jeep 团集合",where:"Arnez门口",tz:"+07:00 ⚠️高风险日"},
+  {iso:"2026-09-30T15:30:00+07:00",title:"飞科莫多 IU726",where:"泗水SUB机场",tz:"+07:00→+08:00"},
+  {iso:"2026-10-01T07:30:00+08:00",title:"科莫多一日团",where:"Labuan Bajo码头",tz:"+08:00"},
+  {iso:"2026-10-02T14:00:00+08:00",title:"蝙蝠日落半日团",where:"Labuan Bajo码头",tz:"+08:00"},
+  {iso:"2026-10-03T10:35:00+08:00",title:"飞巴厘岛 QZ643",where:"科莫多LBJ机场",tz:"+08:00"},
+  {iso:"2026-10-04T09:30:00+08:00",title:"乘船去佩尼达岛",where:"Sanur码头",tz:"+08:00"},
+  {iso:"2026-10-06T07:15:00+08:00",title:"飞香港 SQ949",where:"巴厘岛DPS机场",tz:"+08:00 回程"},
+  {iso:"2026-10-06T17:05:00+08:00",title:"抵达香港 HKG",where:"旅途结束 🎉",tz:"+08:00"},
+];
+function fmt(n){return String(n).padStart(2,'0')}
+function tick(){
+  const now = Date.now();
+  let next = EVENTS.find(e => new Date(e.iso).getTime() > now);
+  const nwEvent = document.getElementById('nw-event');
+  const nwWhen = document.getElementById('nw-when');
+  const nwCount = document.getElementById('nw-count');
+  const nwTz = document.getElementById('nw-tz');
+  if(!next){
+    nwEvent.textContent='🎉 旅途已结束';
+    nwWhen.textContent='2026/9/25 - 10/6 · 印尼12天';
+    nwCount.innerHTML='<div class="nw-unit"><div class="nw-num">✓</div><div class="nw-cap">完成</div></div>';
+    nwTz.textContent='';
+    return;
+  }
+  const target = new Date(next.iso).getTime();
+  const diff = target - now;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor(diff%86400000/3600000);
+  const m = Math.floor(diff%3600000/60000);
+  const s = Math.floor(diff%60000/1000);
+  nwEvent.textContent = next.title;
+  const dt = new Date(next.iso);
+  const localStr = `${dt.getFullYear()}/${fmt(dt.getMonth()+1)}/${fmt(dt.getDate())} ${fmt(dt.getHours())}:${fmt(dt.getMinutes())}`;
+  nwWhen.textContent = `${localStr}（你当前时区显示）`;
+  nwCount.innerHTML = `
+    <div class="nw-unit"><div class="nw-num">${d}</div><div class="nw-cap">天</div></div>
+    <div class="nw-unit"><div class="nw-num">${fmt(h)}</div><div class="nw-cap">时</div></div>
+    <div class="nw-unit"><div class="nw-num">${fmt(m)}</div><div class="nw-cap">分</div></div>
+    <div class="nw-unit"><div class="nw-num">${fmt(s)}</div><div class="nw-cap">秒</div></div>`;
+  nwTz.textContent = `${next.where} · 原始时区 ${next.tz}`;
+}
+tick();
+setInterval(tick,1000);
+
+/* ============ 待办清单 ============ */
+const TODO = [
+  {p:"P0",t:"婆罗浮屠 9/26 门票官网预订（限流1200人/天）",d:"borobudurpark.com"},
+  {p:"P0",t:"Bromo 9/30 日出 jeep 团",d:"整段最脆的一天"},
+  {p:"P0",t:"Cemoro Lawang → SUB 机场 4h 包车（9/30）",d:"不能依赖Bromo团承接"},
+  {p:"P1",t:"科莫多 10/1 团（确认1D还是2D1N）",d:"决定10/2行程"},
+  {p:"P1",t:"佩尼达 10/4 包车+船票",d:"周日爆款，船票会售罄"},
+  {p:"P1",t:"9/28 SGU 火车站 → Cemoro Lawang 包车",d:"17:30后山区叫车极难"},
+  {p:"P1",t:"9/26 日惹包车（婆罗浮屠+普兰巴南一日）",d:"整天包车比打车划算"},
+  {p:"P2",t:"9/27 默拉皮 jeep 团",d:"当天订也行，提前订锁价"},
+  {p:"P2",t:"9/29 Tumpak Sewu 包车",d:"单程1.5-2h，要找靠谱司机"},
+  {p:"P2",t:"10/3 巴厘岛包车（机场→乌布→酒店）",d:"落地当天订也行"},
+  {p:"P2",t:"10/5 苍古摩托车租赁",d:"带国际驾照翻译件"},
+  {p:"P2",t:"Telkomsel eSIM/电话卡（10天45元10G）",d:"落地即激活"},
+  {p:"P2",t:"确认 Arnez Tropical Cottage 房间数（4人需2间）",d:"只订了1间bungalow"},
+  {p:"P2",t:"4人 eVOA 电子签确认（DANWEI已办）",d:"另3人各1份"},
+  {p:"P2",t:"换汇 3000 人民币 + 100 美金",d:"国内换好"},
+  {p:"P2",t:"印尼盾零钱（小费/打车）",d:"落地机场换少量"},
+];
+const todoEl = document.getElementById('todo');
+const TODO_KEY='indo-trip-todo-done-v1';
+let _done;
+try{_done=new Set(JSON.parse(localStorage.getItem(TODO_KEY)||'[]'));}catch(e){_done=new Set();}
+TODO.forEach((t,i)=>{
+  const li=document.createElement('li');
+  if(_done.has(i))li.className='done';
+  li.innerHTML=`<span class="cb">✓</span><span class="pri ${t.p==='P0'?'p0':'p1'}">${t.p}</span><div class="body"><div class="todo-txt">${t.t}</div><small class="todo-desc">${t.d}</small></div>`;
+  li.addEventListener('click',()=>{
+    if(_done.has(i)){_done.delete(i);li.classList.remove('done');}
+    else{_done.add(i);li.classList.add('done');}
+    try{localStorage.setItem(TODO_KEY,JSON.stringify([..._done]));}catch(e){}
+  });
+  todoEl.appendChild(li);
+});
+
+/* ============ 顶栏副标题 ============ */
+document.getElementById('topbar-sub').textContent = '9/25 广州出发 → 10/6 抵港 · 4人 · 12天 · 印尼';
+</script>
+</body>
+</html>
